@@ -8,26 +8,30 @@
 </head>
 
 <body>
-    <script>
-        /**nums = [2, 7, 11, 15], target = 9
-        * @param {number[]} nums
-        * @param {number} target
-        * @return {number[]}
-        */
-        var twoSum = function (nums, target) {
-            let map = {}, loop = 0, dis;
-            while (loop < nums.length) {
-                dis = target - nums[loop];
-                if (map[dis] != undefined) {
-                    return [map[dis], loop];
-                }
-                map[nums[loop]] = loop;
-                loop++;
+<script>
+    /**nums = [2, 7, 11, 15], target = 9
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number[]}
+     */
+
+    // 普通写法
+    var twoSum = function(nums, target) {
+        let targetMap = {}
+        for (let i = 0; i < nums.length; i++) {
+            // 该元素对应的另一个元素,作为键名
+            let key = target - nums[i]
+            // 如果存在该值，则之前存在对应的另一个值
+            if (targetMap[key] || targetMap[key] === 0) {
+                return [targetMap[key], i]
             }
-            return
+            // 建立映射关系
+            targetMap[nums[i]] = i
         }
-        twoSum([2, 7, 11, 15], 9);
-    </script>
+    }
+    twoSum([5, 2, 11, 15, 7, 6], 9)
+
+</script>
 </body>
 
 </html>
